@@ -31,10 +31,52 @@
            </button>
          </div>
          <div class="modal-body">
-           ...
+          <div class="card">
+            <div class="card-body">
+              <form>
+                <div class="form-group form-inline">
+                  <label for="itemName">Item Name: </label>
+                  <input type="iname" name="iname" class="form-control" id="itemName" placeholder="Item Name">
+                </div>
+                <div class="form-group form-inline">
+                  <label for="supName">Supplier Name: </label>
+                  <input type="name" name="supname" class="form-control" id="supName" placeholder="Supplier Name">
+                </div>
+                <div class="form-group form-inline">
+                  <label for="status">Status: </label>
+                  <select>
+                    <option>Active</option>
+                    <option>inactive</option>
+                  </select>
+                </div>
+                <div class="form-group form-inline">
+                  <label for="quant">Quantity: </label>
+                  <select>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                  </select>
+                </div>
+                  <div class="form-group form-inline">
+                      <label for="purchprice">Price: </label>
+                      <input type="price" name="pprice" class="form-control" id="purchprice" placeholder="Enter the price">
+                  </div>
+                  <div class="form-group form-inline">
+                      <label for="ptotal">Total: </label>
+                      <input type="price" name="ptotal" class="form-control" id="ptotal" placeholder="Enter the total costs">
+                  </div>
+                  <div class="form-group form-inline">
+                      <label for="pdate">Date of Purchase: </label>
+                      <input type="date" name="pdate" class="form-control" id="pdate" placeholder="Enter the date of purchase">
+                  </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+              </form>
+            </div>
+          </div>
          </div>
          <div class="modal-footer">
-           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
            <button type="button" class="btn btn-success">Save changes</button>
          </div>
        </div>
