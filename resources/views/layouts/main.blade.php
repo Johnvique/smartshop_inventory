@@ -112,6 +112,19 @@
           <i class="fas fa-shopping-cart"></i>
           <span>Sales</span></a>
       </li>
+            <!-- Nav Item - Account Collapse Menu -->
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAccount" aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-dollar-sign"></i>
+                <span>Account</span>
+              </a>
+              <div id="collapseAccount" class="collapse" aria-labelledby="headingAccount" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <h6 class="collapse-header">Account Option:</h6>
+                <a class="collapse-item" href="{{url('dashboard/accounts')}}">Incomes</a>
+                </div>
+              </div>
+            </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
