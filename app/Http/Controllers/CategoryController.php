@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories =Category::all();
+        return view('dashboard/category', compact('categories'));
     }
 
     /**
@@ -35,7 +36,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category;
+        $category->catrname=$request->get ('catrname');
+        $category->stat=$request->get ('stat');
+        $category->catrdetails=$request->get ('catrdetails');
+
+        $category->save();
+        return redirect()->back();
     }
 
     /**

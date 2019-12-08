@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Purchases;
+use App\Customers;
 use Illuminate\Http\Request;
 
-class PurchasesController extends Controller
+class CustomersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class PurchasesController extends Controller
      */
     public function index()
     {
-        $purchases =Purchases::all();
-        return view('dashboard/purchases', compact('purchases'));
+        $customers = Customers::all();
+        return view('dashboard/customers',compact('customers'));
     }
 
     /**
@@ -36,26 +36,24 @@ class PurchasesController extends Controller
      */
     public function store(Request $request)
     {
-        $purchase = new Purchases;
-        $purchase->iname=$request->get ('iname');
-        $purchase->supname=$request->get ('supname');
-        $purchase->pstat=$request->get ('pstat');
-        $purchase->pquant=$request->get ('pquant');
-        $purchase->pprice=$request->get ('pprice');
-        $purchase->ptotal=$request->get ('ptotal');
-        $purchase->pdate=$request->get ('pdate');
+        $customer = new Customers;
+        $customer->cname=$request->get ('cname');
+        $customer->cmail=$request->get ('cmail');
+        $customer->cphone=$request->get ('cphone');
+        $customer->status=$request->get ('status');
+        $customer->cadress=$request->get ('cadress');
 
-        $purchase->save();
+        $customer->save();
         return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Purchases  $purchases
+     * @param  \App\Customers  $customers
      * @return \Illuminate\Http\Response
      */
-    public function show(Purchases $purchases)
+    public function show(Customers $customers)
     {
         //
     }
@@ -63,10 +61,10 @@ class PurchasesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Purchases  $purchases
+     * @param  \App\Customers  $customers
      * @return \Illuminate\Http\Response
      */
-    public function edit(Purchases $purchases)
+    public function edit(Customers $customers)
     {
         //
     }
@@ -75,10 +73,10 @@ class PurchasesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Purchases  $purchases
+     * @param  \App\Customers  $customers
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Purchases $purchases)
+    public function update(Request $request, Customers $customers)
     {
         //
     }
@@ -86,10 +84,10 @@ class PurchasesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Purchases  $purchases
+     * @param  \App\Customers  $customers
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Purchases $purchases)
+    public function destroy(Customers $customers)
     {
         //
     }

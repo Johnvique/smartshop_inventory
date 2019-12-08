@@ -14,7 +14,8 @@ class SalesController extends Controller
      */
     public function index()
     {
-        //
+        $sales =Sales::all();
+        return view('dashboard/sales', compact('sales'));
     }
 
     /**
@@ -35,7 +36,17 @@ class SalesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sale = new Sales;
+        $sale->itname=$request->get ('itname');
+        $sale->cusname=$request->get ('cusname');
+        $sale->salstat=$request->get ('salstat');
+        $sale->salquant=$request->get ('salquant');
+        $sale->salprice=$request->get ('salprice');
+        $sale->saltotal=$request->get ('saltotal');
+        $sale->saldate=$request->get ('saldate');
+
+        $sale->save();
+        return redirect()->back();
     }
 
     /**

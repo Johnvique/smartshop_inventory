@@ -33,25 +33,26 @@
          <div class="modal-body">
           <div class="card">
             <div class="card-body">
-              <form>
+            <form action="{{route('purchases.store')}}" method="POST">
+              @csrf
                 <div class="form-group form-inline">
                   <label for="itemName">Item Name: </label>
-                  <input type="iname" name="iname" class="form-control" id="itemName" placeholder="Item Name">
+                  <input type="text" name="iname" class="form-control" id="itemName" placeholder="Item Name">
                 </div>
                 <div class="form-group form-inline">
                   <label for="supName">Supplier Name: </label>
-                  <input type="name" name="supname" class="form-control" id="supName" placeholder="Supplier Name">
+                  <input type="text" name="supname" class="form-control" id="supName" placeholder="Supplier Name">
                 </div>
                 <div class="form-group form-inline">
                   <label for="status">Status: </label>
-                  <select>
+                  <select name="pstat">
                     <option>Active</option>
                     <option>inactive</option>
                   </select>
                 </div>
                 <div class="form-group form-inline">
                   <label for="quant">Quantity: </label>
-                  <select>
+                  <select name="pquant">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -87,7 +88,7 @@
  <!-- DataTales Example -->
  <div class="card shadow mb-4">
      <div class="card-header py-3">
-       <h6 class="m-0 font-weight-bold text-success">Total Purchases Details</h6>
+       <h6 class="m-0 font-weight-bold text-success">Manage Purchases</h6>
      </div>
      <div class="card-body">
        <div class="table-responsive">
@@ -119,61 +120,19 @@
                 </tr>
           </tfoot>
           <tbody>
+            @foreach ($purchases as $purchase)
             <tr>
-              <td>01</td>
-              <td>Laptop</td>
-              <td>Sheillah</td>
-              <td>active,inactive</td>
-              <td>29</td>
-              <td>550.00</td>
-              <td>580.50</td>
-              <td>05/12/2019</td>
-              <td>view,edit,delete</td>
-            </tr>
-            <tr>
-                <td>02</td>
-                <td>Bread</td>
-                <td>Joel</td>
-                <td>active,inactive</td>
-                <td>29</td>
-                <td>550.00</td>
-                <td>580.50</td>
-                <td>15/11/2019</td>
+                <td>{{$purchase->id}}</td>
+                <td>{{$purchase->iname}}</td>
+                <td>{{$purchase->supname}}</td>
+                <td>{{$purchase->pstat}}</td>
+                <td>{{$purchase->pquant}}</td>
+                <td>{{$purchase->pprice}}</td>
+                <td>{{$purchase->ptotal}}</td>
+                <td>{{$purchase->pdate}}</td>
                 <td>view,edit,delete</td>
-              </tr>
-              <tr>
-                  <td>03</td>
-                  <td>Cups</td>
-                  <td>Evian</td>
-                  <td>active,inactive</td>
-                  <td>29</td>
-                  <td>550.00</td>
-                  <td>580.50</td>
-                  <td>29/11/2019</td>
-                  <td>view,edit,delete</td>
-                </tr>
-                <tr>
-                    <td>04</td>
-                    <td>Bed</td>
-                    <td>Laban</td>
-                    <td>active,inactive</td>
-                    <td>29</td>
-                    <td>550.00</td>
-                    <td>580.50</td>
-                    <td>02/12/2019</td>
-                    <td>view,edit,delete</td>
-                  </tr>
-                  <tr>
-                      <td>05</td>
-                      <td>Chair</td>
-                      <td>Glyn</td>
-                      <td>active,inactive</td>
-                      <td>29</td>
-                      <td>550.00</td>
-                      <td>580.50</td>
-                      <td>04/12/2019</td>
-                      <td>view,edit,delete</td>
-                    </tr>
+              </tr>      
+            @endforeach
           </tbody>
         </table>
        </div>

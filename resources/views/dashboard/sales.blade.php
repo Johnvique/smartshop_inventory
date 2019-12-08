@@ -33,25 +33,26 @@
          <div class="modal-body">
           <div class="card">
             <div class="card-body">
-              <form>
+            <form action="{{route('sales.store')}}" method="POST">
+              @csrf
                 <div class="form-group form-inline">
                   <label for="itemName">Item Name: </label>
-                  <input type="name" name="itname" class="form-control" id="itemName" placeholder="Item Name">
+                  <input type="text" name="itname" class="form-control" id="itemName" placeholder="Item Name">
                 </div>
                 <div class="form-group form-inline">
                   <label for="cusName">Customer Name: </label>
-                  <input type="name" name="cusname" class="form-control" id="cusName" placeholder="Supplier Name">
+                  <input type="text" name="cusname" class="form-control" id="cusName" placeholder="Supplier Name">
                 </div>
                 <div class="form-group form-inline">
                   <label for="status">Status: </label>
-                  <select>
+                  <select name="salstat">
                     <option>Active</option>
                     <option>inactive</option>
                   </select>
                 </div>
                 <div class="form-group form-inline">
                   <label for="quant">Quantity: </label>
-                  <select>
+                  <select name="salquant">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -60,15 +61,15 @@
                 </div>
                   <div class="form-group form-inline">
                       <label for="sprice">Price: </label>
-                      <input type="price" name="sprice" class="form-control" id="sprice" placeholder="Enter the price">
+                      <input type="text" name="salprice" class="form-control" id="sprice" placeholder="Enter the price">
                   </div>
                   <div class="form-group form-inline">
                       <label for="stotal">Total: </label>
-                      <input type="price" name="stotal" class="form-control" id="stotal" placeholder="Enter the total costs">
+                      <input type="text" name="saltotal" class="form-control" id="stotal" placeholder="Enter the total costs">
                   </div>
                   <div class="form-group form-inline">
                       <label for="sdate">Date of Sales: </label>
-                      <input type="date" name="sdate" class="form-control" id="sdate" placeholder="Enter the date of Sales">
+                      <input type="date" name="saldate" class="form-control" id="sdate" placeholder="Enter the date of Sales">
                   </div>
                 <button type="submit" class="btn btn-success">Submit</button>
               </form>
@@ -87,7 +88,7 @@
  <!-- DataTales Example -->
  <div class="card shadow mb-4">
      <div class="card-header py-3">
-       <h6 class="m-0 font-weight-bold text-success">Total Daily Sales</h6>
+       <h6 class="m-0 font-weight-bold text-success">Manage Sales</h6>
      </div>
      <div class="card-body">
        <div class="table-responsive">
@@ -119,61 +120,19 @@
                 </tr>
           </tfoot>
           <tbody>
+            @foreach ($sales as $sale)
             <tr>
-              <td>01</td>
-              <td>Sahani</td>
-              <td>Ododa</td>
-              <td>active,inactive</td>
-              <td>56</td>
-              <td>2500.50</td>
-              <td>2800.50</td>
-              <td>20/11/2019</td>
-              <td>view,edit,delete</td>
-            </tr>
-            <tr>
-                <td>02</td>
-                <td>Sahani</td>
-                <td>Ododa</td>
-                <td>active,inactive</td>
-                <td>56</td>
-                <td>2500.50</td>
-                <td>2800.50</td>
-                <td>04/08/2019</td>
+                <td>{{$sale->id}}</td>
+                <td>{{$sale->itname}}</td>
+                <td>{{$sale->cusname}}</td>
+                <td>{{$sale->salstat}}</td>
+                <td>{{$sale->salquant}}</td>
+                <td>{{$sale->salprice}}</td>
+                <td>{{$sale->saltotal}}</td>
+                <td>{{$sale->saldate}}</td>
                 <td>view,edit,delete</td>
-              </tr>
-              <tr>
-                  <td>03</td>
-                  <td>Omena</td>
-                  <td>Sylvia</td>
-                  <td>active,inactive</td>
-                  <td>56</td>
-                  <td>2500.50</td>
-                  <td>2800.50</td>
-                  <td>02/10/2019</td>
-                  <td>view,edit,delete</td>
-                </tr>
-                <tr>
-                    <td>04</td>
-                    <td>sukari</td>
-                    <td>John</td>
-                    <td>active,inactive</td>
-                    <td>56</td>
-                    <td>2500.50</td>
-                    <td>2800.50</td>
-                    <td>15/11/2019</td>
-                    <td>view,edit,delete</td>
-                  </tr>
-                  <tr>
-                      <td>05</td>
-                      <td>chakula</td>
-                      <td>Luke</td>
-                      <td>active,inactive</td>
-                      <td>56</td>
-                      <td>2500.50</td>
-                      <td>2800.50</td>
-                      <td>22/11/2019</td>
-                      <td>view,edit,delete</td>
-                    </tr>
+              </tr>     
+            @endforeach
           </tbody>
         </table>
        </div>

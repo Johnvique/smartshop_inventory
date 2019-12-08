@@ -33,29 +33,30 @@
          <div class="modal-body">
           <div class="card">
             <div class="card-body">
-              <form>
+            <form action="{{route('customers.store')}}" method="POST">
+              @csrf
                 <div class="form-group form-inline">
                   <label for="user">Customer Name: </label>
-                  <input type="name" name="cname" class="form-control" id="user" placeholder="Customer Name">
+                  <input type="text" name="cname" class="form-control" id="user" placeholder="Customer Name">
                 </div>
               <div class="form-group form-inline">
                   <label for="email">Customer Email: </label>
-                  <input type="email" name="cmail" class="form-control" id="email" placeholder="Customer Email">
+                  <input type="text" name="cmail" class="form-control" id="email" placeholder="Customer Email">
               </div>
               <div class="form-group form-inline">
                 <label for="phone">Customer Phone: </label>
-                <input type="phone" name="cphone" class="form-control" id="phone" placeholder="Customer Phone Number">
+                <input type="tel" name="cphone" class="form-control" id="phone" placeholder="Customer Phone Number">
               </div>
                 <div class="form-group form-inline">
                   <label for="status">Status: </label>
-                  <select>
+                  <select name="status">
                     <option>Active</option>
                     <option>Inactive</option>
                   </select>
                 </div>
                   <div class="form-group form-inline">
                       <label for="adress">Adress: </label>
-                      <input type="adress" name="cadress" class="form-control" id="adress" placeholder="Enter Adress">
+                      <input type="text" name="cadress" class="form-control" id="adress" placeholder="Enter Adress">
                   </div>
                 <button type="submit" class="btn btn-success">Submit</button>
               </form>
@@ -74,7 +75,7 @@
  <!-- DataTales Example -->
  <div class="card shadow mb-4">
      <div class="card-header py-3">
-       <h6 class="m-0 font-weight-bold text-success">Available Customers</h6>
+       <h6 class="m-0 font-weight-bold text-success">Manage Customers</h6>
      </div>
      <div class="card-body">
        <div class="table-responsive">
@@ -102,51 +103,17 @@
             </tr>
           </tfoot>
           <tbody>
-              <tr>
-                  <td>01</td>
-                  <td>Joan Akinyi</td>
-                  <td>joan@mail.com</td>
-                  <td>+2547123456789</td>
-                  <td>active,inactive</td>
-                  <td>236-40222,oyugis.</td>
-                  <td>view,edit,delete</td>
-                </tr>
-                <tr>
-                    <td>02</td>
-                    <td>Felisters Joy</td>
-                    <td>felie@mail.com</td>
-                    <td>+2547234556789</td>
-                    <td>active,inactive</td>
-                    <td>236-40222,Macahkos.</td>
-                    <td>view,edit,delete</td>
-                </tr>
-                <tr>
-                    <td>03</td>
-                    <td>Peninah Kwamboka</td>
-                    <td>pesh@mail.com</td>
-                    <td>+2547123456789</td>
-                    <td>active,inactive</td>
-                    <td>236-40222,oyugis.</td>
-                    <td>view,edit,delete</td>
-                  </tr>
-                  <tr>
-                      <td>04</td>
-                      <td>Laura Awuor</td>
-                      <td>laura@mail.com</td>
-                      <td>+2547123456789</td>
-                      <td>active,inactive</td>
-                      <td>236-40222,oyugis.</td>
-                      <td>view,edit,delete</td>
-                    </tr>
-                    <tr>
-                        <td>05</td>
-                        <td>Beryl Adera</td>
-                        <td>beryl@mail.com</td>
-                        <td>+2547123456789</td>
-                        <td>active,inactive</td>
-                        <td>236-40222,oyugis.</td>
-                        <td>view,edit,delete</td>
-                      </tr>
+            @foreach ($customers as $customer)
+            <tr>
+            <td>{{$customer->id}}</td>
+                <td>{{$customer->cname}}</td>
+                <td>{{$customer->cmail}}</td>
+                <td>{{$customer->cphone}}</td>
+                <td>{{$customer->status}}</td>
+                <td>{{$customer->cardress}}</td>
+                <td>view,edit,delete</td>
+              </tr>    
+            @endforeach
           </tbody>
         </table>
        </div>

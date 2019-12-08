@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\People;
+use App\Suppliers;
 use Illuminate\Http\Request;
 
-class PeopleController extends Controller
+class SuppliersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class PeopleController extends Controller
      */
     public function index()
     {
-        //
+        $suppliers =Suppliers::all();
+        return view('dashboard/suppliers', compact('suppliers'));
     }
 
     /**
@@ -35,16 +36,25 @@ class PeopleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $supplier = new Suppliers;
+        $supplier->sname=$request->get ('sname');
+        $supplier->smail=$request->get ('smail');
+        $supplier->sphone=$request->get ('sphone');
+        $supplier->compname=$request->get ('compname');
+        $supplier->sstat=$request->get ('sstat');
+        $supplier->sadress=$request->get ('sadress');
+
+        $supplier->save();
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\People  $people
+     * @param  \App\Suppliers  $suppliers
      * @return \Illuminate\Http\Response
      */
-    public function show(People $people)
+    public function show(Suppliers $suppliers)
     {
         //
     }
@@ -52,10 +62,10 @@ class PeopleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\People  $people
+     * @param  \App\Suppliers  $suppliers
      * @return \Illuminate\Http\Response
      */
-    public function edit(People $people)
+    public function edit(Suppliers $suppliers)
     {
         //
     }
@@ -64,10 +74,10 @@ class PeopleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\People  $people
+     * @param  \App\Suppliers  $suppliers
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, People $people)
+    public function update(Request $request, Suppliers $suppliers)
     {
         //
     }
@@ -75,10 +85,10 @@ class PeopleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\People  $people
+     * @param  \App\Suppliers  $suppliers
      * @return \Illuminate\Http\Response
      */
-    public function destroy(People $people)
+    public function destroy(Suppliers $suppliers)
     {
         //
     }

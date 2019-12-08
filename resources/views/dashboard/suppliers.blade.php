@@ -33,26 +33,27 @@
          <div class="modal-body">
           <div class="card">
             <div class="card-body">
-              <form>
+            <form action="{{route('suppliers.store')}}" method="POST">
+              @csrf
                 <div class="form-group form-inline">
                   <label for="user">Name: </label>
-                  <input type="name" name="sname" class="form-control" id="user" placeholder="Supplier Name">
+                  <input type="text" name="sname" class="form-control" id="user" placeholder="Supplier Name">
                 </div>
               <div class="form-group form-inline">
                   <label for="email">Email: </label>
-                  <input type="email" name="smail" class="form-control" id="email" placeholder="Supplier Email">
+                  <input type="text" name="smail" class="form-control" id="email" placeholder="Supplier Email">
               </div>
               <div class="form-group form-inline">
                 <label for="phone">Phone: </label>
-                <input type="phone" name="sphone" class="form-control" id="phone" placeholder="Supplier Phone Number">
+                <input type="tel" name="sphone" class="form-control" id="phone" placeholder="Supplier Phone Number">
               </div>
               <div class="form-group form-inline">
                 <label for="compName">Company: </label>
-                <input type="compname" name="compname" class="form-control" id="compName" placeholder="Company Name">
+                <input type="text" name="compname" class="form-control" id="compName" placeholder="Company Name">
               </div>
                 <div class="form-group form-inline">
                   <label for="status">Status: </label>
-                  <select>
+                  <select name="sstat">
                     <option>Active</option>
                     <option>Inactive</option>
                   </select>
@@ -78,7 +79,7 @@
  <!-- DataTales Example -->
  <div class="card shadow mb-4">
      <div class="card-header py-3">
-       <h6 class="m-0 font-weight-bold text-Success">Suppliers Details</h6>
+       <h6 class="m-0 font-weight-bold text-Success">Manage Supplies</h6>
      </div>
      <div class="card-body">
        <div class="table-responsive">
@@ -108,56 +109,18 @@
                 </tr>
           </tfoot>
           <tbody>
+            @foreach ($suppliers as $supplier)
             <tr>
-              <td>01</td>
-              <td>Carol</td>
-              <td>carol@mail.com</td>
-              <td>+2547112200998</td>
-              <td>Sony Sugar Limited</td>
-              <td>active,inactive</td>
-              <td>22-0110,Awendo</td>
-              <td>view,edit,delete</td>
-            </tr>
-            <tr>
-                <td>02</td>
-                <td>Amollo</td>
-                <td>amollo@mail.com</td>
-                <td>+2547112200998</td>
-                <td>Cellulant Softwares Limited</td>
-                <td>active,inactive</td>
-                <td>22-0110,Awendo</td>
-                <td>view,edit,delete</td>
-              </tr>
-              <tr>
-                  <td>03</td>
-                  <td>Victor</td>
-                  <td>victor@mail.com</td>
-                  <td>+2547112200998</td>
-                  <td>Sony Sugar Limited</td>
-                  <td>active,inactive</td>
-                  <td>22-0110,Awendo</td>
-                  <td>view,edit,delete</td>
-                </tr>
-                <tr>
-                    <td>04</td>
-                    <td>Fidel</td>
-                    <td>fidel@mail.com</td>
-                    <td>+2547112200998</td>
-                    <td>Dawanol Limited</td>
-                    <td>active,inactive</td>
-                    <td>22-0110,Awendo</td>
-                    <td>view,edit,delete</td>
-                  </tr>
-                  <tr>
-                      <td>05</td>
-                      <td>Robert</td>
-                      <td>robert@mail.com</td>
-                      <td>+2547112200998</td>
-                      <td>iHUB Kenya</td>
-                      <td>active,inactive</td>
-                      <td>22-0110,Awendo</td>
-                      <td>view,edit,delete</td>
-                    </tr>
+            <td>{{$supplier->id}}</td>
+            <td>{{$supplier->sname}}</td>
+            <td>{{$supplier->smail}}</td>
+            <td>{{$supplier->sphone}}</td>
+            <td>{{$supplier->compname}}</td>
+            <td>{{$supplier->sstat}}</td>
+            <td>{{$supplier->sadress}}</td>
+            <td>view,edit,delete</td>
+              </tr>  
+            @endforeach
           </tbody>
         </table>
        </div>

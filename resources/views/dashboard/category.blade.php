@@ -33,21 +33,22 @@
          <div class="modal-body">
           <div class="card">
             <div class="card-body">
-              <form>
+            <form action="{{route('category.store')}}" method="POST">
+              @csrf
                 <div class="form-group form-inline">
                   <label for="catName">Category Name: </label>
-                  <input type="username" name="Catname" class="form-control" id="catName" placeholder="Category Name">
+                  <input type="text" name="catrname" class="form-control" id="catName" placeholder="Category Name">
                 </div>
                 <div class="form-group form-inline">
                   <label for="status">Status: </label>
-                  <select>
+                  <select name="stat">
                     <option>Active</option>
                     <option>Inactive</option>
                   </select>
                 </div>
                   <div class="form-group form-inline">
                       <label for="details">Category Details: </label>
-                      <select class="details" name="catrDetails" id="details">
+                      <select class="details" name="catrdetails" id="details">
                         <option>Sweeping</option>
                         <option>Sleeping</option>
                         <option>Eating</option>
@@ -62,7 +63,7 @@
           </div>
          </div>
          <div class="modal-footer">
-           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
            <button type="button" class="btn btn-success">Save changes</button>
          </div>
        </div>
@@ -73,7 +74,7 @@
  <!-- DataTales Example -->
  <div class="card shadow mb-4">
      <div class="card-header py-3">
-       <h6 class="m-0 font-weight-bold text-success">Transaction Categories</h6>
+       <h6 class="m-0 font-weight-bold text-success">Manage Categories</h6>
      </div>
      <div class="card-body">
        <div class="table-responsive">
@@ -97,34 +98,15 @@
                 </tr>
           </tfoot>
           <tbody>
+            @foreach ($categories as $category)
             <tr>
-              <td>01</td>
-              <td>Cleaning</td>
-              <td>Active,Inactive</td>
-              <td>Securing Compounds</td>
-              <td>View,Edit,Delete</td>
-            </tr>
-            <tr>
-                <td>02</td>
-                <td>Sweeping</td>
-                <td>Active,Inactive</td>
-                <td>Picking Compounds</td>
-                <td>View,Edit,Delete</td>
-            </tr>
-            <tr>
-                <td>03</td>
-                <td>Eating</td>
-                <td>Active,Inactive</td>
-                <td>Clearing Compounds</td>
-                <td>View,Edit,Delete</td>
-            </tr>
-            <tr>
-                <td>04</td>
-                <td>Digging</td>
-                <td>Active,Inactive</td>
-                <td>Keeping Compounds</td>
-                <td>View,Edit,Delete</td>
-              </tr>
+                <td>{{$category->id}}</td>
+                <td>{{$category->catrname}}</td>
+                <td>{{$category->stat}}</td>
+                <td>{{$category->catrdetails}}</td>
+                <td>view,edit,delete</td>
+              </tr>      
+            @endforeach
           </tbody>
         </table>
        </div>

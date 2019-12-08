@@ -33,26 +33,27 @@
          <div class="modal-body">
           <div class="card">
             <div class="card-body">
-              <form>
+            <form action="{{route('employees.store')}}" method="POST">
+              @csrf
                 <div class="form-group form-inline">
                   <label for="user">Employee Name: </label>
-                  <input type="name" name="ename" class="form-control" id="user" placeholder="Employee Name">
+                  <input type="text" name="ename" class="form-control" id="user" placeholder="Employee Name">
                 </div>
               <div class="form-group form-inline">
                   <label for="email">Employee Email: </label>
-                  <input type="email" name="eemail" class="form-control" id="email" placeholder="Employee Email">
+                  <input type="text" name="eemail" class="form-control" id="email" placeholder="Employee Email">
               </div>
               <div class="form-group form-inline">
                 <label for="phone">Employee Phone: </label>
-                <input type="phone" name="ephone" class="form-control" id="phone" placeholder="Employee Phone Number">
+                <input type="tel" name="ephone" class="form-control" id="phone" placeholder="Employee Phone Number">
               </div>
             <div class="form-group form-inline">
                 <label for="adress">Adress: </label>
-                <input type="adress" name="eadress" class="form-control" id="adress" placeholder="Enter Adress">
+                <input type="text" name="eadress" class="form-control" id="adress" placeholder="Enter Adress">
             </div>
                 <div class="form-group form-inline">
                   <label for="status">Status: </label>
-                  <select>
+                  <select name="estat">
                     <option>Active</option>
                     <option>Inactive</option>
                   </select>
@@ -74,7 +75,7 @@
  <!-- DataTales Example -->
  <div class="card shadow mb-4">
      <div class="card-header py-3">
-       <h6 class="m-0 font-weight-bold text-success">Available Employees</h6>
+       <h6 class="m-0 font-weight-bold text-success">Manage Employees</h6>
      </div>
      <div class="card-body">
        <div class="table-responsive">
@@ -102,51 +103,17 @@
                 </tr>
           </tfoot>
           <tbody>
+            @foreach ($employees as $employee)
             <tr>
-              <td>01</td>
-              <td>Byron</td>
-              <td>byron@mail.com</td>
-              <td>+254709871234</td>
-              <td>33-4030,Homa Bay</td>
-              <td>active,inactive</td>
-              <td>view,edit,delete</td>
-            </tr>
-            <tr>
-                <td>02</td>
-                <td>Achieng'</td>
-                <td>achieng@mail.com</td>
-                <td>+254709871234</td>
-                <td>33-4030,Kosele</td>
-                <td>active,inactive</td>
-                <td>view,edit,delete</td>
-              </tr>
-              <tr>
-                  <td>03</td>
-                  <td>Benard</td>
-                  <td>ben@mail.com</td>
-                  <td>+254709871234</td>
-                  <td>33-4030,Kisumu</td>
-                  <td>active,inactive</td>
-                  <td>view,edit,delete</td>
-                </tr>
-                <tr>
-                    <td>04</td>
-                    <td>Geoffrey</td>
-                    <td>geff@mail.com</td>
-                    <td>+254709871234</td>
-                    <td>33-4030,Nairobi</td>
-                    <td>active,inactive</td>
-                    <td>view,edit,delete</td>
-                  </tr>
-                  <tr>
-                      <td>05</td>
-                      <td>Abrilla</td>
-                      <td>abrilla@mail.com</td>
-                      <td>+254709871234</td>
-                      <td>33-4030,Eldoret</td>
-                      <td>active,inactive</td>
-                      <td>view,edit,delete</td>
-                    </tr>
+            <td>{{$employee->id}}</td>
+            <td>{{$employee->ename}}</td>
+            <td>{{$employee->eemail}}</td>
+            <td>{{$employee->ephone}}</td>
+            <td>{{$employee->eadress}}</td>
+            <td>{{$employee->estat}}</td>
+            <td>view,edit,delete</td>
+              </tr>   
+            @endforeach
           </tbody>
         </table>
        </div>

@@ -18,32 +18,26 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard/index', function () {
         return view('dashboard/index');
 });
-Route::get('dashboard/products', function () {
-    return view('dashboard/products');
-});
-Route::any('dashboard/customers', function () {
-   return view('dashboard/customers'); 
-});
-Route::any('dashboard/suppliers', function () {
-    return view('dashboard/suppliers'); 
- });
- Route::any('dashboard/employees', function () {
-    return view('dashboard/employees'); 
- });
- Route::any('dashboard/category', function () {
-    return view('dashboard/category'); 
- });
- Route::any('dashboard/purchases', function () {
-    return view('dashboard/purchases'); 
- });
- Route::any('dashboard/sales', function () {
-    return view('dashboard/sales'); 
- });
+Route::get('dashboard/products','ProductsController@index');
+Route::get('dashboard/category','CategoryController@index');
+Route::get('dashboard/customers','CustomersController@index');
+Route::get('dashboard/suppliers','SuppliersController@index');
+Route::get('dashboard/employees','EmployeesController@index');
+Route::get('dashboard/purchases','PurchasesController@index');
+Route::get('dashboard/sales','SalesController@index');
  
-    
 });
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('category', 'CategoryController');
+Route::resource('products', 'ProductsController');
+Route::resource('people', 'PeopleController');
+Route::resource('customers', 'CustomersController');
+Route::resource('suppliers', 'SuppliersController');
+Route::resource('employees', 'EmployeesController');
+Route::resource('purchases', 'PurchasesController');
+Route::resource('sales', 'SalesController');

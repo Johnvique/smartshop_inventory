@@ -14,7 +14,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        //
+        $products = Products::all();
+        return view('dashboard/products',compact('products'));
     }
 
     /**
@@ -35,7 +36,17 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Products;
+        $product->prodname=$request->get ('prodname');
+        $product->catgy=$request->get ('catgy');
+        $product->supname=$request->get ('supname');
+        $product->costprice=$request->get ('costprice');
+        $product->pprice=$request->get ('pprice');
+        $product->unit=$request->get ('unit');
+        $product->image=$request->get ('image');
+
+        $product->save();
+        return redirect()->back();
     }
 
     /**

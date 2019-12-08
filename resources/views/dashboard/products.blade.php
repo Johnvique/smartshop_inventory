@@ -25,7 +25,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Manage Products</h5>
+          <h5 class="modal-title bg-lg bg-success text-white" id="exampleModalLabel">Manage Products</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -33,15 +33,16 @@
         <div class="modal-body">
           <div class="card">
             <div class="card-body">
-              <form>
+            <form action="{{route('products.store')}}" method="POST">
+              @csrf
                 <div class="form-group form-inline">
                   <label for="prodName">Name: </label>
                   <input type="prodname" name="prodname" class="form-control" id="prodName" placeholder="Product Name">
                 </div>
                 <div class="form-group form-inline">
-                  <label for="exampleFormControlSelect1">Category: </label>
-                  <select>
-                    <option>Cleaning</option>
+                  <label for="category">Category: </label>
+                  <select name="catgy">
+                    <option value="">Cleaning</option>
                     <option>Sweeping</option>
                     <option>Picking</option>
                     <option>Security</option>
@@ -50,19 +51,19 @@
                 </div>
                   <div class="form-group form-inline">
                       <label for="supName">Supplier Name: </label>
-                      <input type="supname" name="supname" class="form-control" id="supName" placeholder="Enter Suppliers">
+                      <input type="text" name="supname" class="form-control" id="supName" placeholder="Enter Suppliers">
                   </div>
                   <div class="form-group form-inline">
                       <label for="cost">Cost Price: </label>
-                      <input type="price" name="costPrice" class="form-control" id="cost" placeholder="Enter the costs">
+                      <input type="text" name="costprice" class="form-control" id="cost" placeholder="Enter the costs">
                   </div>
                   <div class="form-group form-inline">
                       <label for="price">Price: </label>
-                      <input type="price" name="price" class="form-control" id="price" placeholder="Enter the price">
+                      <input type="text" name="pprice" class="form-control" id="price" placeholder="Enter the price">
                   </div>
                   <div class="form-group form-inline">
                       <label for="unit">Unit: </label>
-                      <select class="form-control" class="unit" id="unit">
+                      <select class="form-control" name="unit" id="unit">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -73,7 +74,7 @@
                   </div>
                   <div class="form-group form-inline">
                       <label for="image">Image: </label>
-                      <input type="image" name="image" class="form-control" id="image" 
+                      <input type="text" name="image" class="form-control" id="image" 
                       filenameformat="random" btntext="Browse" extensions="jpg,png,gif,jpeg" filesize="3" maximum="1" placeholder="Upload the Image Here">
                   </div>
                 <button type="submit" class="btn btn-success">Submit</button>
@@ -93,7 +94,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-success">Available Products</h6>
+      <h6 class="m-0 font-weight-bold text-success">Manage Products</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -125,61 +126,19 @@
             </tr>
           </tfoot>
           <tbody>
+            @foreach ($products as $product)
             <tr>
-              <td>01</td>
-              <td>John Victor</td>
-              <td>Cleaning Compound</td>
-              <td>Programming Team</td>
-              <td>1500.00</td>
-              <td>1200.00</td>
-              <td>18</td>
-              <td>image</td>
-              <td>view,edit,delete</td>
-            </tr>
-            <tr>
-                <td>02</td>
-                <td>Merry Njeri</td>
-                <td>Cleaning Compound</td>
-                <td>Programming Team</td>
-                <td>1500.00</td>
-                <td>1200.00</td>
-                <td>18</td>
-                <td>image</td>
+                <td>{{$product->id}}</td>
+                <td>{{$product->prodname}}</td>
+                <td>{{$product->catgy}}</td>
+                <td>{{$product->supname}}</td>
+                <td>{{$product->costprice}}</td>
+                <td>{{$product->pprice}}</td>
+                <td>{{$product->unit}}</td>
+                <td>{{$product->image}}</td>
                 <td>view,edit,delete</td>
             </tr>
-            <tr>
-                <td>03</td>
-                <td>Akello Christine</td>
-                <td>Cleaning Compound</td>
-                <td>Programming Team</td>
-                <td>1500.00</td>
-                <td>1200.00</td>
-                <td>18</td>
-                <td>image</td>
-                <td>view,edit,delete</td>
-            </tr>
-            <tr>
-                <td>04</td>
-                <td>Otieno Odero</td>
-                <td>Cleaning Compound</td>
-                <td>Programming Team</td>
-                <td>1500.00</td>
-                <td>1200.00</td>
-                <td>18</td>
-                <td>image</td>
-                <td>view,edit,delete</td>
-            </tr>
-            <tr>
-                <td>05</td>
-                <td>Sylvia Cecy</td>
-                <td>Cleaning Compound</td>
-                <td>Programming Team</td>
-                <td>1500.00</td>
-                <td>1200.00</td>
-                <td>18</td>
-                <td>image</td>
-                <td>view,edit,delete</td>
-            </tr>
+            @endforeach
           </tbody>
         </table>
       </div>
