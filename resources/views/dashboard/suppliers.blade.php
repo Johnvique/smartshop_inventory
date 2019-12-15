@@ -62,14 +62,14 @@
                       <label for="adress">Adress: </label>
                       <input type="adress" name="sadress" class="form-control" id="adress" placeholder="Enter Adress">
                   </div>
-                <button type="submit" class="btn btn-success">Submit</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-success">Save changes</button>
               </form>
             </div>
           </div>
          </div>
          <div class="modal-footer">
-           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-           <button type="button" class="btn btn-success">Save changes</button>
+
          </div>
        </div>
      </div>
@@ -79,7 +79,7 @@
  <!-- DataTales Example -->
  <div class="card shadow mb-4">
      <div class="card-header py-3">
-       <h6 class="m-0 font-weight-bold text-Success">Manage Supplies</h6>
+       <h6 class="m-0 font-weight-bold">Manage Supplies</h6>
      </div>
      <div class="card-body">
        <div class="table-responsive">
@@ -118,7 +118,11 @@
             <td>{{$supplier->compname}}</td>
             <td>{{$supplier->sstat}}</td>
             <td>{{$supplier->sadress}}</td>
-            <td>view,edit,delete</td>
+            <td>
+                <a  href="" class="btn btn-info fa fa-eye btn-sm"></a>
+                <a  href="" class="btn btn-warning fa fa-edit btn-sm"></a>
+                <a  href="" class="btn btn-danger fa fa-trash-alt btn-sm"></a>
+            </td>
               </tr>  
             @endforeach
           </tbody>

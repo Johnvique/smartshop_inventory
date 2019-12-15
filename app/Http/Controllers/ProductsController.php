@@ -66,21 +66,35 @@ class ProductsController extends Controller
      * @param  \App\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function edit(Products $products)
+    public function edit(Products $products ,$id)
     {
-        //
+        $my_product = Products::find($id);
+        return view('dashboard/products_action/edit_product',compact('my_product','id'));
     }
 
     /**
      * Update the specified resource in storage.
+     * 
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Products $products)
+    public function update(Request $request, Products $products,$id)
     {
-        //
+        $products = Products::find($id);
+
+        $products->update([
+            'prodname'=>$request->prodname,
+            'catgy'=>$request->catgy,
+            'supname'=>$request->supname,
+            'costprice'=>$request->costprice,
+            'pprice'=>$request->pprice,
+            'unit'=>$request->unit,
+            'image'=>$request->image,
+
+        ]);
+        return redirect ('products');
     }
 
     /**

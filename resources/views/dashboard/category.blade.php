@@ -57,14 +57,14 @@
                       </select>
                       
                   </div>
-                <button type="submit" class="btn btn-success">Submit</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-success">Save changes</button>
               </form>
             </div>
           </div>
          </div>
          <div class="modal-footer">
-           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-           <button type="button" class="btn btn-success">Save changes</button>
+
          </div>
        </div>
      </div>
@@ -104,7 +104,11 @@
                 <td>{{$category->catrname}}</td>
                 <td>{{$category->stat}}</td>
                 <td>{{$category->catrdetails}}</td>
-                <td>view,edit,delete</td>
+                <td>
+                    <a  href="" class="btn btn-info fa fa-eye btn-sm"></a>
+                    <a  href="{{action('CategoryController@edit', $category['id'])}}" class="btn btn-warning fa fa-edit btn-sm"></a>
+                    <a  href="" class="btn btn-danger fa fa-trash-alt btn-sm"></a>
+                </td>
               </tr>      
             @endforeach
           </tbody>
