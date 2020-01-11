@@ -108,7 +108,8 @@
               <th>Price</th>
               <th>Unit</th>
               <th>Image</th>
-              <th>Action</th>
+              <th>Update</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tfoot>
@@ -121,7 +122,8 @@
               <th>Price</th>
               <th>Unit</th>
               <th>Image</th>
-              <th>Action</th>
+              <th>Update</th>
+              <th>Delete</th>
             </tr>
           </tfoot>
           <tbody>
@@ -135,10 +137,14 @@
                 <td>{{$product->pprice}}</td>
                 <td>{{$product->unit}}</td>
                 <td>{{$product->image}}</td>
+                <td><a  href="{{action('ProductsController@edit', $product->id)}}" class="btn btn-warning fa fa-edit btn-sm"></a></td>
                 <td>
-                  <a  href="" class="btn btn-info fa fa-eye btn-sm"></a>
-                  <a  href="{{action('ProductsController@edit', $product['id'])}}" class="btn btn-warning fa fa-edit btn-sm"></a>
-                  <a  href="" class="btn btn-danger fa fa-trash-alt btn-sm"></a></td>
+                  <form action="{{action('ProductsController@destroy',$product->id )}}" method="post">
+                  @csrf
+                  <input type="hidden" name="_method" value="DELETE">
+                  <button class="btn btn-danger fa fa-trash-alt btn-sm"></button>
+                   </form>
+                </td>
             </tr>
             @endforeach
           </tbody>

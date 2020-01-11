@@ -64,9 +64,10 @@ class EmployeesController extends Controller
      * @param  \App\Employees  $employees
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employees $employees)
+    public function edit($id)
     {
-        //
+        $employee=Employees::find($id);
+        return view('dashboard/employees_action/edit_employees',compact('employee'));
     }
 
     /**
@@ -76,9 +77,18 @@ class EmployeesController extends Controller
      * @param  \App\Employees  $employees
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employees $employees)
+    public function update(Request $request, Employees $employees,$id)
     {
-        //
+        $employees=Employees::find($id);
+        $employees->update([
+            'enmae'=>$request->ename,
+            'eemail'=>$request->eemail,
+            'ephone'=>$request->ephone,
+            'eadress'=>$request->eadress,
+            'estat'=>$request->estat,
+        ]);
+
+        return redirect('employees');
     }
 
     /**
@@ -87,8 +97,10 @@ class EmployeesController extends Controller
      * @param  \App\Employees  $employees
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employees $employees)
+    public function destroy(Employees $employees,$id)
     {
-        //
+        $employees=Employees::find($id);
+        $employees->delete();
+        return redirect('employees');
     }
 }

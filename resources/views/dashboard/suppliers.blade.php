@@ -118,11 +118,12 @@
             <td>{{$supplier->compname}}</td>
             <td>{{$supplier->sstat}}</td>
             <td>{{$supplier->sadress}}</td>
-            <td>
-                <a  href="" class="btn btn-info fa fa-eye btn-sm"></a>
-                <a  href="" class="btn btn-warning fa fa-edit btn-sm"></a>
-                <a  href="" class="btn btn-danger fa fa-trash-alt btn-sm"></a>
-            </td>
+            <td><a  href="{{action('SuppliersController@edit',$supplier->id)}}" class="btn btn-warning fa fa-edit btn-sm"></a></td>
+            <td><form action="{{action('SuppliersController@destroy',$supplier->id )}}" method="post">
+              @csrf
+              <input type="hidden" name="_method" value="DELETE">
+              <button class="btn btn-danger fa fa-trash-alt btn-sm"></button>
+               </form></td>
               </tr>  
             @endforeach
           </tbody>

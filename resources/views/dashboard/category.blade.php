@@ -85,16 +85,18 @@
               <th>Category Name</th>
               <th>Status</th>
               <th>Category Details</th>
-              <th>Action</th>
+              <th>Update</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tfoot>
               <tr>
-                  <th>SI</th>
-                  <th>Category Name</th>
-                  <th>Status</th>
-                  <th>Category Details</th>
-                  <th>Action</th>
+                <th>SI</th>
+                <th>Category Name</th>
+                <th>Status</th>
+                <th>Category Details</th>
+                <th>Update</th>
+                <th>Delete</th>
                 </tr>
           </tfoot>
           <tbody>
@@ -104,11 +106,12 @@
                 <td>{{$category->catrname}}</td>
                 <td>{{$category->stat}}</td>
                 <td>{{$category->catrdetails}}</td>
-                <td>
-                    <a  href="" class="btn btn-info fa fa-eye btn-sm"></a>
-                    <a  href="{{action('CategoryController@edit', $category['id'])}}" class="btn btn-warning fa fa-edit btn-sm"></a>
-                    <a  href="" class="btn btn-danger fa fa-trash-alt btn-sm"></a>
-                </td>
+                <td><a  href="{{action('CategoryController@edit', $category->id)}}" class="btn btn-warning fa fa-edit btn-sm"></a></td>
+                <td><form action="{{action('CategoryController@destroy',$category->id )}}" method="post">
+                  @csrf
+                  <input type="hidden" name="_method" value="DELETE">
+                  <button class="btn btn-danger fa fa-trash-alt btn-sm"></button>
+                   </form></td>
               </tr>      
             @endforeach
           </tbody>

@@ -88,7 +88,8 @@
               <th>Customer Phone</th>
               <th>Status</th>
               <th>Customer Adress</th>
-              <th>Action</th>
+              <th>Update</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tfoot>
@@ -99,7 +100,8 @@
               <th>Customer Phone</th>
               <th>Status</th>
               <th>Customer Adress</th>
-              <th>Action</th>
+              <th>Update</th>
+              <th>Delete</th>
             </tr>
           </tfoot>
           <tbody>
@@ -110,12 +112,13 @@
                 <td>{{$customer->cmail}}</td>
                 <td>{{$customer->cphone}}</td>
                 <td>{{$customer->status}}</td>
-                <td>{{$customer->cardress}}</td>
-                <td>
-                    <a  href="" class="btn btn-info fa fa-eye btn-sm"></a>
-                    <a  href="" class="btn btn-warning fa fa-edit btn-sm"></a>
-                    <a  href="" class="btn btn-danger fa fa-trash-alt btn-sm"></a>
-                </td>
+                <td>{{$customer->cadress}}</td>
+            <td><a  href="{{action('CustomersController@edit',$customer->id)}}" class="btn btn-warning fa fa-edit btn-sm"></a></td>
+                <td><form action="{{action('CustomersController@destroy',$customer->id )}}" method="post">
+                  @csrf
+                  <input type="hidden" name="_method" value="DELETE">
+                  <button class="btn btn-danger fa fa-trash-alt btn-sm"></button>
+                   </form></td>
               </tr>    
             @endforeach
           </tbody>

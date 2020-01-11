@@ -64,9 +64,10 @@ class CustomersController extends Controller
      * @param  \App\Customers  $customers
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customers $customers)
+    public function edit(Customers $customers,$id)
     {
-        //
+        $customers = Customers::find($id);
+        return view('dashboard/customers_action/edit_customers',compact('customers')); 
     }
 
     /**
@@ -76,9 +77,19 @@ class CustomersController extends Controller
      * @param  \App\Customers  $customers
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customers $customers)
+    public function update(Request $request, Customers $customers,$id)
     {
-        //
+        $customer=Customers::find($id);
+        $customer->update([
+            'cname'=>$request->cname,
+            'cmail'=>$request->cmail,
+            'cphone'=>$request->cphone,
+            'status'=>$request->status,
+            'cadress'=>$request->cadress,
+
+        ]);
+
+        return redirect('customers');
     }
 
     /**
@@ -87,8 +98,10 @@ class CustomersController extends Controller
      * @param  \App\Customers  $customers
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customers $customers)
+    public function destroy(Customers $customers,$id)
     {
-        //
+        $customer= Customers::find($id);
+        $customer->delete();
+        return redirect('customers');
     }
 }

@@ -65,9 +65,11 @@ class SuppliersController extends Controller
      * @param  \App\Suppliers  $suppliers
      * @return \Illuminate\Http\Response
      */
-    public function edit(Suppliers $suppliers)
+    public function edit(Suppliers $suppliers,$id)
     {
-        //
+        $supplier= Suppliers::find($id);
+        $suppliers=Suppliers::all();
+        return view('dashboard/suppliers_action/edit_suppliers',compact('supplier','suppliers'));
     }
 
     /**
@@ -77,9 +79,18 @@ class SuppliersController extends Controller
      * @param  \App\Suppliers  $suppliers
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Suppliers $suppliers)
+    public function update(Request $request, Suppliers $suppliers,$id)
     {
-        //
+        $supplier=Suppliers::find($id);
+        $supplier->update([
+            'sname'=>$request->sname,
+            'smail'=>$request->smail,
+            'sphone'=>$request->sphone,
+            'compname'=>$request->compname,
+            'sstat'=>$request->sstat,
+            'sadress'=>$request->sadress,
+        ]);
+        return redirect('suppliers');
     }
 
     /**
@@ -88,8 +99,10 @@ class SuppliersController extends Controller
      * @param  \App\Suppliers  $suppliers
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Suppliers $suppliers)
+    public function destroy(Suppliers $suppliers,$id)
     {
-        //
+        $supplier= Suppliers::find($id);
+        $supplier->delete();
+        return redirect('suppliers');
     }
 }

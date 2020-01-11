@@ -66,9 +66,10 @@ class PurchasesController extends Controller
      * @param  \App\Purchases  $purchases
      * @return \Illuminate\Http\Response
      */
-    public function edit(Purchases $purchases)
+    public function edit(Purchases $purchases,$id)
     {
-        //
+        $purchase= Purchases::find($id);
+        return view('dashboard/purchase_action/edit_purchase', compact('purchase'));
     }
 
     /**
@@ -78,9 +79,20 @@ class PurchasesController extends Controller
      * @param  \App\Purchases  $purchases
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Purchases $purchases)
+    public function update(Request $request, Purchases $purchases,$id)
     {
-        //
+        $purchase= Purchases::find($id);
+        $purchase->update([
+            'iname'=>$request->iname,
+            'supname'=>$request->supname,
+            'pstat'=>$request->pstat,
+            'pquant'=>$request->pquant,
+            'pprice'=>$request->pprice,
+            'ptotal'=>$request->ptotal,
+            'pdate'=>$request->pdate,
+        ]);
+
+        return redirect('purchases');
     }
 
     /**
@@ -89,8 +101,10 @@ class PurchasesController extends Controller
      * @param  \App\Purchases  $purchases
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Purchases $purchases)
+    public function destroy(Purchases $purchases,$id)
     {
-        //
+        $purchases= Purchases::find($id);
+        $purchases->delete();
+        return redirect('purchases');
     }
 }

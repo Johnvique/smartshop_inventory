@@ -3,8 +3,10 @@
    <div class="container-fluid">
       <div class="card">
          <div class="card-body">
-               <form action="" method="POST">
+         <form action="{{route('category.update',$my_category['id'])}}" method="POST">
+          <input type="hidden" name="id" value="{{$my_category->id}}" />
                      @csrf
+                     @method('PUT')
                        <div class="form-group form-inline">
                          <label for="catName">Category Name: </label>
                        <input type="text" name="catrname" value="{{$my_category->cartname}}" class="form-control" id="catName" placeholder="Category Name">
@@ -12,18 +14,17 @@
                        <div class="form-group form-inline">
                          <label for="status">Status: </label>
                          <select name="stat">
-                           <option>Active</option>
-                           <option>Inactive</option>
+                          @foreach ($categories as $category)
+                         <option>{{$category->stat}}</option>  
+                          @endforeach
                          </select>
                        </div>
                          <div class="form-group form-inline">
                              <label for="details">Category Details: </label>
                              <select class="details" name="catrdetails" id="details">
-                               <option>Sweeping</option>
-                               <option>Sleeping</option>
-                               <option>Eating</option>
-                               <option>Coding</option>
-                               <option>Playing</option>
+                               @foreach ($categories as $category)
+                             <option>{{$category->catrdetails}}</option>   
+                               @endforeach
                              </select>
                              
                          </div>

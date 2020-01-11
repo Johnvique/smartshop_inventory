@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Products;
+use App\Category;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -69,7 +70,8 @@ class ProductsController extends Controller
     public function edit(Products $products ,$id)
     {
         $my_product = Products::find($id);
-        return view('dashboard/products_action/edit_product',compact('my_product','id'));
+        $categories = Category::all();
+        return view('dashboard/products_action/edit_product',compact('my_product','categories'));
     }
 
     /**
@@ -83,7 +85,7 @@ class ProductsController extends Controller
     public function update(Request $request, Products $products,$id)
     {
         $products = Products::find($id);
-
+        
         $products->update([
             'prodname'=>$request->prodname,
             'catgy'=>$request->catgy,
@@ -103,8 +105,10 @@ class ProductsController extends Controller
      * @param  \App\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Products $products)
+    public function destroy(Products $products, $id)
     {
-        //
+        $product = Products::find($id);
+        $product->delete();
+        return redirect('products');
     }
 }

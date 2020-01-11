@@ -130,10 +130,13 @@
                 <td>{{$sale->salprice}}</td>
                 <td>{{$sale->saltotal}}</td>
                 <td>{{$sale->saldate}}</td>
+                <td><a  href="{{action('SalesController@edit', $sale->id)}}" class="btn btn-warning fa fa-edit btn-sm"></a></td>
                 <td>
-                    <a  href="" class="btn btn-info fa fa-eye btn-sm"></a>
-                    <a  href="" class="btn btn-warning fa fa-edit btn-sm"></a>
-                    <a  href="" class="btn btn-danger fa fa-trash-alt btn-sm"></a> 
+                  <form action="{{action('SalesController@destroy', $sale->id)}}" method="post">
+                  @csrf
+                  <input type="hidden" name="_method" value="DELETE">
+                  <button class="btn btn-danger fa fa-trash-alt btn-sm"></button>
+                   </form>
                 </td>
               </tr>     
             @endforeach

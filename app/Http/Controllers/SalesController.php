@@ -66,9 +66,10 @@ class SalesController extends Controller
      * @param  \App\Sales  $sales
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sales $sales)
+    public function edit(Sales $sales,$id)
     {
-        //
+        $sale= Sales::find($id);
+        return view('dashboard/sales_action/edit_sales',compact('sale'));
     }
 
     /**
@@ -78,9 +79,20 @@ class SalesController extends Controller
      * @param  \App\Sales  $sales
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sales $sales)
+    public function update(Request $request, Sales $sales,$id)
     {
-        //
+        $sale= Sales::find($id);
+        $sale->update([
+            'itname'=>$request->itname,
+            'cusname'=>$request->cusname,
+            'salstat'=>$request->salstat,
+            'salquant'=>$request->salquant,
+            'salprice'=>$request->salprice,
+            'saltotal'=>$request->saltotal,
+            'saldate'=>$request->saldate,
+        ]);
+
+        return redirect('sales');
     }
 
     /**
@@ -89,8 +101,11 @@ class SalesController extends Controller
      * @param  \App\Sales  $sales
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sales $sales)
+    public function destroy(Sales $sales,$id)
     {
-        //
+        $sale= Sales::find($id);
+        $sale->delete();
+
+        return redirect('sales');
     }
 }

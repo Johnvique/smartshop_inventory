@@ -64,9 +64,10 @@ class AccountsController extends Controller
      * @param  \App\Accounts  $accounts
      * @return \Illuminate\Http\Response
      */
-    public function edit(Accounts $accounts)
+    public function edit(Accounts $accounts,$id)
     {
-        //
+        $account= Accounts::find($id);
+        return view('dashboard/account_action/edit_account',compact('account'));
     }
 
     /**
@@ -76,9 +77,18 @@ class AccountsController extends Controller
      * @param  \App\Accounts  $accounts
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Accounts $accounts)
+    public function update(Request $request, Accounts $accounts,$id)
     {
-        //
+        $account= Accounts::find($id);
+        $account->update([
+            'paydate'=>$request->paydate,
+            'payfrom'=>$request->payfrom,
+            'paytype'=>$request->paytype,
+            'payaccount'=>$request->payaccount,
+            'amount'=>$request->amount,
+        ]);
+
+        return redirect('accounts');
     }
 
     /**
@@ -87,8 +97,11 @@ class AccountsController extends Controller
      * @param  \App\Accounts  $accounts
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Accounts $accounts)
+    public function destroy(Accounts $accounts,$id)
     {
-        //
+        $account= Accounts::find($id);
+        $account->delete();
+
+        return redirect('accounts');
     }
 }

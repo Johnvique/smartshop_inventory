@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-body">
-        <form action="{{route('products.update',$my_product->id)}}" method="POST">
+        <form action="{{route('products.update', $my_product->id)}}" method="POST">
                         @csrf
                         @method('PUT')
                           <div class="form-group form-inline">
@@ -15,15 +15,14 @@
                             <label for="category">Category: </label>
                             <select name="catgy">
                               <option value="">{{$my_product->catgy}}</option>
-                              <option>Sweeping</option>
-                              <option>Picking</option>
-                              <option>Security</option>
-                              <option>Eating</option>
+                              @foreach ($categories as $category)
+                            <option value="{{$category->catrname}}">{{$category->catrname}}</option>  
+                              @endforeach
                             </select>
                           </div>
                             <div class="form-group form-inline">
                                 <label for="supName">Supplier Name: </label>
-                            <input type="text" name="supname" value="{{$my_product->supname}}"class="form-control" id="supName" placeholder="Enter Suppliers">
+                            <input type="text" name="supname" value="{{$my_product->supname}}"class="form-control" id="supName" placeholder="Enter Suppliers" required>
                             </div>
                             <div class="form-group form-inline">
                                 <label for="cost">Cost Price: </label>
