@@ -106,12 +106,6 @@
           <span>Purchases</span></a>
       </li>
 
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-      <a class="nav-link" href="{{url('dashboard/sales')}}">
-          <i class="fas fa-shopping-cart"></i>
-          <span>Sales</span></a>
-      </li>
             <!-- Nav Item - Account Collapse Menu -->
             <li class="nav-item">
               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAccount" aria-expanded="true" aria-controls="collapseUtilities">
@@ -153,11 +147,10 @@
         <!-- Topbar Search -->
         <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
           <div class="input-group">
-            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-              <button class="btn btn-success" type="button">
-                <i class="fas fa-search fa-sm"></i>
-              </button>
+            <div class="card">
+              <div class="card-body bg-success">
+                <h4 style="color: #FFFFFF">Smartshop Business Inventory</h4>
+              </div>
             </div>
           </div>
         </form>

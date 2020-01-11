@@ -14,10 +14,6 @@
         <i class="fa fa-file-pdf" aria-hidden="true"></i>
       PDF
       </button>
-      <button type="button" class="btn btn-success" onclick="PrintDiv()">
-          <i class="fa fa-print" aria-hidden="true"></i>
-        Print
-        </button>
    </button>
    
    <!-- Modal -->
