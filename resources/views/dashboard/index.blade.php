@@ -8,7 +8,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
       <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-    <a href="{{asset('dashboard/sales')}}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-cart fa-sm text-white-50"></i> Sales Report</a>
+    <a href="{{asset('dashboard/sales')}}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-briefcase fa-sm text-white-50"></i> Sales Report</a>
     </div>
 
     <!-- Content Row -->
@@ -16,12 +16,12 @@
 
       <!-- Earnings (Monthly) Card Example -->
       <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card border-left-info shadow h-100 py-2">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Product</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$product_count}} Products</div>
+                <div class="text-xs font-weight-bold text-default text-uppercase mb-1">Available Products</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$product_count}} <a href="{{url('dashboard/products')}}">Products</a></div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-folder fa-2x text-gray-300"></i>
@@ -33,12 +33,12 @@
 
       <!-- Earnings (Monthly) Card Example -->
       <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-success shadow h-100 py-2">
+        <div class="card border-left-info shadow h-100 py-2">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Customer</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$customers_count}} Customers</div>
+                <div class="text-xs font-weight-bold text-default text-uppercase mb-1">Our Customers</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$customers_count}} <a href="{{url('dashboard/customers')}}">Customers</a></div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -54,17 +54,17 @@
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Supplier</div>
+                <div class="text-xs font-weight-bold text-default text-uppercase mb-1">Frequent Suppliers</div>
                 <div class="row no-gutters align-items-center">
                   <div class="col-auto">
-                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$suppliers_count}} Supplier</div>
+                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$suppliers_count}} <a href="{{url('dashboard/suppliers')}}">Suppliers</a></div>
                   </div>
                   <div class="col">
                   </div>
                 </div>
               </div>
               <div class="col-auto">
-                <i class="fas fa-user fa-2x text-gray-300"></i>
+                <i class="fas fa-user-plus fa-2x text-gray-300"></i>
               </div>
             </div>
           </div>
@@ -73,12 +73,12 @@
 
       <!-- Pending Requests Card Example -->
       <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-warning shadow h-100 py-2">
+        <div class="card border-left-info shadow h-100 py-2">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Employee</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$employees_count}} Employees</div>
+                <div class="text-xs font-weight-bold text-default text-uppercase mb-1">Registered Employees</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{$employees_count}} <a href="{{url('dashboard/employees')}}">Employees</a></div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -87,6 +87,74 @@
           </div>
         </div>
       </div>
+
+            <!-- Total Sales  Report -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-default text-uppercase mb-1">Total Purchase</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$purchase_count}} <a href="{{url('dashboard/purchases')}}">Purchases</a></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-briefcase fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          <!-- Total Sales  Report -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-default text-uppercase mb-1">Sales Report</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$sales_count}} <a href="{{url('dashboard/sales')}}">Sales</a></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-briefcase fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+<!-- Accounts Statistics -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+          <div class="text-xs font-weight-bold text-default text-uppercase mb-1">Account Statistics</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$account_count}} <a href="{{url('dashboard/accounts')}}">Accounts</a></div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category Options -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+          <div class="text-xs font-weight-bold text-default text-uppercase mb-1">Category Options</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$category_count}} <a href="{{url('dashboard/category')}}">Categories</a></div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-th fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
     </div>
 
     <!-- Content Row -->

@@ -28,7 +28,7 @@
         <div class="modal-body">
           <div class="card">
             <div class="card-body">
-            <form action="{{route('products.store')}}" method="POST">
+            <form action="{{route('products.store')}}" method="POST" enctype="multipart/form-data" >
               @csrf
                 <div class="form-group form-inline">
                   <label for="prodName">Name: </label>
@@ -36,8 +36,8 @@
                 </div>
                 <div class="form-group form-inline">
                   <label for="category">Category: </label>
-                  <select name="catgy">
-                    <option value="">Cleaning</option>
+                  <select name="category">
+                    <option>Cleaning</option>
                     <option>Sweeping</option>
                     <option>Picking</option>
                     <option>Security</option>
@@ -69,8 +69,8 @@
                   </div>
                   <div class="form-group form-inline">
                       <label for="image">Image: </label>
-                      <input type="text" name="image" class="form-control" id="image" 
-                      filenameformat="random" btntext="Browse" extensions="jpg,png,gif,jpeg" filesize="3" maximum="1" placeholder="Upload the Image Here">
+                      <input type="file" name="image" class="form-control" id="image"  placeholder="Upload the Image Here"
+                       onchange="return imageval()">
                   </div>
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                   <button type="submit" class="btn btn-success">Save changes</button>
@@ -127,15 +127,15 @@
             <tr>
                 <td>{{$product->id}}</td>
                 <td>{{$product->prodname}}</td>
-                <td>{{$product->catgy}}</td>
+                <td>{{$product->category}}</td>
                 <td>{{$product->supname}}</td>
                 <td>{{$product->costprice}}</td>
                 <td>{{$product->pprice}}</td>
                 <td>{{$product->unit}}</td>
-                <td>{{$product->image}}</td>
+                <td><img class="img-responsive" style="width:50px" src="{{asset('img/'.$product->image)}}"/></td>
                 <td><a  href="{{action('ProductsController@edit', $product->id)}}" class="btn btn-warning fa fa-edit btn-sm"></a></td>
                 <td>
-                  <form action="{{action('ProductsController@destroy',$product->id )}}" method="post">
+                  <form action="{{action('ProductsController@destroy', $product->id )}}" method="post">
                   @csrf
                   <input type="hidden" name="_method" value="DELETE">
                   <button class="btn btn-danger fa fa-trash-alt btn-sm"></button>

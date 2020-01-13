@@ -64,9 +64,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $categories, $id)
     {
-        $my_category = Category::find($id);
+        $category = Category::find($id);
         $categories = Category::all();
-        return view('dashboard/category_action/edit_category',compact('my_category','id','categories'));
+        return view('dashboard/category_action/edit_category',compact('category','categories'));
     }
 
     /**
@@ -76,15 +76,16 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Category $categories,$id)
     {
-            $categories = Category::where ('id',$request->id)->update([
-                'catrname'=>$request->catrname,
-                'stat'=>$request->stat,
-                'catrdetails'=>$request->catrdetails,
-    
-            ]);
-            return redirect ('category');
+        $categories= Category::find($id);
+        $categories->update([
+            'catrname'=>$request->catrname,
+            'stat'=>$request->stat,
+            'catrdetails'=>$request->catrdetails,
+        ]);
+
+        return redirect('category');
         
     }
 

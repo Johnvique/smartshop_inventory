@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Products;
-use App\Category;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -37,14 +36,26 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Products;
-        $product->prodname=$request->get ('prodname');
-        $product->catgy=$request->get ('catgy');
-        $product->supname=$request->get ('supname');
-        $product->costprice=$request->get ('costprice');
-        $product->pprice=$request->get ('pprice');
-        $product->unit=$request->get ('unit');
-        $product->image=$request->get ('image');
+        if ($request->hasFile('image')) {
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+            $path = $request->file('image')->move(public_path('img'), $fileNameToStore);
+        } else {
+            $fileNameToStore = 'default.jpg';
+        }
+
+
+        $product= new Products;
+        $product->prodname=$request->get('prodname');
+        $product->category=$request->get('category');
+        $product->supname=$request->get('supname');
+        $product->costprice=$request->get('costprice');
+        $product->pprice=$request->get('pprice');
+        $product->unit=$request->get('unit');
+        // $product->image=$request->get('image');
+        $product->image = $fileNameToStore;
 
         $product->save();
         return redirect()->back();
@@ -69,9 +80,8 @@ class ProductsController extends Controller
      */
     public function edit(Products $products ,$id)
     {
-        $my_product = Products::find($id);
-        $categories = Category::all();
-        return view('dashboard/products_action/edit_product',compact('my_product','categories'));
+        $product = Products::find($id);
+        return view('dashboard/products_action/edit_product',compact('product'));
     }
 
     /**
@@ -84,11 +94,11 @@ class ProductsController extends Controller
      */
     public function update(Request $request, Products $products,$id)
     {
-        $products = Products::find($id);
+        $product = Products::find($id);
         
-        $products->update([
+        $product->update([
             'prodname'=>$request->prodname,
-            'catgy'=>$request->catgy,
+            'category'=>$request->category,
             'supname'=>$request->supname,
             'costprice'=>$request->costprice,
             'pprice'=>$request->pprice,

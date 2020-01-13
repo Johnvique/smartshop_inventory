@@ -149,7 +149,7 @@
           <div class="input-group">
             <div class="card">
               <div class="card-body bg-success">
-                <h4 style="color: #FFFFFF">Smartshop Business Inventory</h4>
+                <h4 style="color: #FFFFFF">Smartshop Mini-Wholesale</h4>
               </div>
             </div>
           </div>

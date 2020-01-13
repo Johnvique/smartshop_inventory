@@ -3,27 +3,26 @@
    <div class="container-fluid">
       <div class="card">
          <div class="card-body">
-         <form action="{{route('category.update',$my_category['id'])}}" method="POST">
-          <input type="hidden" name="id" value="{{$my_category->id}}" />
+         <form action="{{route('category.update', $category->id)}}" method="POST">
                      @csrf
                      @method('PUT')
                        <div class="form-group form-inline">
                          <label for="catName">Category Name: </label>
-                       <input type="text" name="catrname" value="{{$my_category->cartname}}" class="form-control" id="catName" placeholder="Category Name">
+                       <input type="text" name="catrname" value="{{$category->catrname}}" class="form-control" id="catName" placeholder="Category Name">
                        </div>
                        <div class="form-group form-inline">
                          <label for="status">Status: </label>
                          <select name="stat">
                           @foreach ($categories as $category)
-                         <option>{{$category->stat}}</option>  
+                         <option value="{{$category->stat}}">{{$category->stat}}</option>  
                           @endforeach
                          </select>
                        </div>
                          <div class="form-group form-inline">
                              <label for="details">Category Details: </label>
-                             <select class="details" name="catrdetails" id="details">
+                             <select class="details" name="catrdetails"  id="details">
                                @foreach ($categories as $category)
-                             <option>{{$category->catrdetails}}</option>   
+                             <option value="{{$category->catrdetails}}">{{$category->catrdetails}}</option>   
                                @endforeach
                              </select>
                              
