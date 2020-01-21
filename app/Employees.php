@@ -11,6 +11,7 @@ class Employees extends Model
         'eemail',
         'ephone',
         'eadress',
-        'estat'
+        'estat',
+        'image'
     ];
 }

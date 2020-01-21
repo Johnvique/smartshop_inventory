@@ -30,9 +30,10 @@
     <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('/')}}">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-book"></i>
+          <img class="img-sider rounded-circle" src="{{asset('img/logo.png')}}" alt="img-thumnail" 
+          style="width: 3em; height: 3em">
         </div>
         <div class="sidebar-brand-text mx-3">Smartshop-Inventory <sup></sup></div>
       </a>

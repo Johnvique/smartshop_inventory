@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use App\Suppliers;
 use Illuminate\Http\Request;
 
@@ -36,6 +37,19 @@ class SuppliersController extends Controller
      */
     public function store(Request $request)
     {
+
+        if ($request->hasFile('image')) {
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+            $path = $request->file('image')->move(public_path('img'), $fileNameToStore);
+        } else {
+            $fileNameToStore = 'default.png';
+        }
+
+
+
         $supplier = new Suppliers;
         $supplier->sname=$request->get ('sname');
         $supplier->smail=$request->get ('smail');
@@ -43,6 +57,7 @@ class SuppliersController extends Controller
         $supplier->compname=$request->get ('compname');
         $supplier->sstat=$request->get ('sstat');
         $supplier->sadress=$request->get ('sadress');
+        $supplier->image = $fileNameToStore;
 
         $supplier->save();
         return redirect()->back();
@@ -102,6 +117,7 @@ class SuppliersController extends Controller
     public function destroy(Suppliers $suppliers,$id)
     {
         $supplier= Suppliers::find($id);
+        file::delete('img/'.$supplier->image);
         $supplier->delete();
         return redirect('suppliers');
     }

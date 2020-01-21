@@ -21,6 +21,7 @@ class CreateSuppliersTable extends Migration
             $table->string('compname');
             $table->string('sstat');
             $table->string('sadress');
+            $table->string('image');
             $table->timestamps();
         });
     }

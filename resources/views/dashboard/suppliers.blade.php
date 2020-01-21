@@ -29,7 +29,7 @@
          <div class="modal-body">
           <div class="card">
             <div class="card-body">
-            <form action="{{route('suppliers.store')}}" method="POST">
+            <form action="{{route('suppliers.store')}}" method="POST" enctype="multipart/form-data">
               @csrf
                 <div class="form-group form-inline">
                   <label for="user">Name: </label>
@@ -58,6 +58,11 @@
                       <label for="adress">Adress: </label>
                       <input type="adress" name="sadress" class="form-control" id="adress" placeholder="Enter Adress">
                   </div>
+                  <div class="form-group form-inline">
+                    <label for="image">Image: </label>
+                    <input type="file" name="image" class="form-control" id="image"  placeholder="Upload the Image Here"
+                     onchange="return imageval()">
+                </div>
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                   <button type="submit" class="btn btn-success">Save changes</button>
               </form>
@@ -89,6 +94,7 @@
               <th>Company</th>
               <th>Status</th>
               <th>Adress</th>
+              <th>Image</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -101,6 +107,7 @@
                   <th>Company</th>
                   <th>Status</th>
                   <th>Adress</th>
+                  <th>Image</th>
                   <th>Action</th>
                 </tr>
           </tfoot>
@@ -114,6 +121,7 @@
             <td>{{$supplier->compname}}</td>
             <td>{{$supplier->sstat}}</td>
             <td>{{$supplier->sadress}}</td>
+            <td><img class="img-responsive" style="width:50px" src="{{asset('img/'.$supplier->image)}}"/></td>
             <td><a  href="{{action('SuppliersController@edit',$supplier->id)}}" class="btn btn-warning fa fa-edit btn-sm"></a></td>
             <td><form action="{{action('SuppliersController@destroy',$supplier->id )}}" method="post">
               @csrf

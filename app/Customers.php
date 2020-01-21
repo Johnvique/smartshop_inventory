@@ -11,6 +11,7 @@ class Customers extends Model
         'cmail',
         'cphone',
         'status',
-        'cadress'
+        'cadress',
+        'image'
     ];
 }

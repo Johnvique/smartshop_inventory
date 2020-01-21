@@ -12,6 +12,7 @@ class Suppliers extends Model
         'sphone',
         'compname',
         'sstat',
-        'sadress'
+        'sadress',
+        'image'
     ];
 }

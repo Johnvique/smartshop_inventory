@@ -3,7 +3,7 @@
    <div class="container-fluid">
       <div class="card">
          <div class="card-body">
-            <form action="{{route('customers.update',$customers->id)}}" method="POST">
+            <form action="{{route('customers.update',$customers->id)}}" method="POST" enctype="multipart/form-data">
                @csrf
                @method('PUT')
                  <div class="form-group form-inline">
@@ -28,6 +28,11 @@
                    <div class="form-group form-inline">
                        <label for="adress">Adress: </label>
                        <input type="text" name="cadress" value="{{$customers->cadress}}" class="form-control" id="adress" placeholder="Enter Adress">
+                   </div>
+                   <div class="form-group form-inline">
+                    <label for="image">Image: </label>
+                    <input type="file" name="image" value="{{$customers->image}}" class="form-control" id="image"  placeholder="Upload the Image Here"
+                     onchange="return imageval()">
                    </div>
                    <button type="submit" class="btn btn-success">Update</button>
                </form>

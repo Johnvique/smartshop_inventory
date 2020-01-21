@@ -29,7 +29,7 @@
          <div class="modal-body">
           <div class="card">
             <div class="card-body">
-            <form action="{{route('employees.store')}}" method="POST">
+            <form action="{{route('employees.store')}}" method="POST" enctype="multipart/form-data">
               @csrf
                 <div class="form-group form-inline">
                   <label for="user">Employee Name: </label>
@@ -54,6 +54,11 @@
                     <option>Inactive</option>
                   </select>
                 </div>
+                <div class="form-group form-inline">
+                  <label for="image">Image: </label>
+                  <input type="file" name="image" class="form-control" id="image"  placeholder="Upload the Image Here"
+                   onchange="return imageval()">
+              </div>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 <button type="submit" class="btn btn-success">Save changes</button>
               </form>
@@ -84,6 +89,7 @@
               <th>Phone</th>
               <th>Adress</th>
               <th>Status</th>
+              <th>Image</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -95,6 +101,7 @@
                   <th>Phone</th>
                   <th>Adress</th>
                   <th>Status</th>
+                  <th>Image</th>
                   <th>Action</th>
                 </tr>
           </tfoot>
@@ -107,6 +114,7 @@
             <td>{{$employee->ephone}}</td>
             <td>{{$employee->eadress}}</td>
             <td>{{$employee->estat}}</td>
+            <td><img class="img-responsive" style="width:50px" src="{{asset('img/'.$employee->image)}}"/></td>
             <td><a  href="{{action('EmployeesController@edit', $employee->id)}}" class="btn btn-warning fa fa-edit btn-sm"></a></td>
             <td>
               <form action="{{action('EmployeesController@destroy', $employee->id)}}" method="post">

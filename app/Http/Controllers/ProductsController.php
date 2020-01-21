@@ -43,7 +43,7 @@ class ProductsController extends Controller
             $fileNameToStore = $filename . '_' . time() . '.' . $extension;
             $path = $request->file('image')->move(public_path('img'), $fileNameToStore);
         } else {
-            $fileNameToStore = 'default.jpg';
+            $fileNameToStore = 'default.png';
         }
 
 
@@ -54,7 +54,6 @@ class ProductsController extends Controller
         $product->costprice=$request->get('costprice');
         $product->pprice=$request->get('pprice');
         $product->unit=$request->get('unit');
-        // $product->image=$request->get('image');
         $product->image = $fileNameToStore;
 
         $product->save();

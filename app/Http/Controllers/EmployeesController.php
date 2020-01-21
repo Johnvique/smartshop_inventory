@@ -36,12 +36,26 @@ class EmployeesController extends Controller
      */
     public function store(Request $request)
     {
+
+        if ($request->hasFile('image')) {
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+            $path = $request->file('image')->move(public_path('img'), $fileNameToStore);
+        } else {
+            $fileNameToStore = 'default.png';
+        }
+
+
+
         $employees = new Employees;
         $employees->ename=$request->get ('ename');
         $employees->eemail=$request->get ('eemail');
         $employees->ephone=$request->get ('ephone');
         $employees->eadress=$request->get ('eadress');
         $employees->estat=$request->get ('estat');
+        $employees->image = $fileNameToStore;
 
         $employees->save();
         return redirect()->back();

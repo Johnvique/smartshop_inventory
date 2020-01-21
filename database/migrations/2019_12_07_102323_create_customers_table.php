@@ -20,6 +20,7 @@ class CreateCustomersTable extends Migration
             $table->string('cphone');
             $table->string('status');
             $table->string('cadress');
+            $table->string('image');
             $table->timestamps();
         });
     }

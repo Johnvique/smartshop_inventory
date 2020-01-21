@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use App\Customers;
 use Illuminate\Http\Request;
 
@@ -36,12 +37,26 @@ class CustomersController extends Controller
      */
     public function store(Request $request)
     {
+
+        if ($request->hasFile('image')) {
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+            $path = $request->file('image')->move(public_path('img'), $fileNameToStore);
+        } else {
+            $fileNameToStore = 'default.png';
+        }
+
+
+
         $customer = new Customers;
         $customer->cname=$request->get ('cname');
         $customer->cmail=$request->get ('cmail');
         $customer->cphone=$request->get ('cphone');
         $customer->status=$request->get ('status');
         $customer->cadress=$request->get ('cadress');
+        $customer->image = $fileNameToStore;
 
         $customer->save();
         return redirect()->back();
@@ -101,6 +116,7 @@ class CustomersController extends Controller
     public function destroy(Customers $customers,$id)
     {
         $customer= Customers::find($id);
+        File::delete('img/'.$customer->image);
         $customer->delete();
         return redirect('customers');
     }
