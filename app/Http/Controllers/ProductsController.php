@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use File;
 use App\Products;
 use Illuminate\Http\Request;
 
@@ -117,6 +117,7 @@ class ProductsController extends Controller
     public function destroy(Products $products, $id)
     {
         $product = Products::find($id);
+        file::delete('img/.$product->image');
         $product->delete();
         return redirect('products');
     }

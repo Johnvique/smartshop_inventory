@@ -24,6 +24,9 @@ Route::get('dashboard/employees','EmployeesController@index');
 Route::get('dashboard/purchases','PurchasesController@index');
 Route::get('dashboard/sales','SalesController@index');
 Route::get('dashboard/accounts', 'AccountsController@index');
+Route::get('dashboard/role', 'RoleController@index');
+Route::get('dashboard/setting', 'SettingController@index');
+Route::get('dashboard/permission', 'PermissionController@index');
  
 });
 
@@ -41,3 +44,6 @@ Route::resource('employees', 'EmployeesController');
 Route::resource('purchases', 'PurchasesController');
 Route::resource('sales', 'SalesController');
 Route::resource('accounts', 'AccountsController');
+Route::resource('setting', 'SettingController');
+Route::resource('role', 'RoleController');
+Route::resource('permission', 'PermissionController');

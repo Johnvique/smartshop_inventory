@@ -28,7 +28,7 @@
         <div class="modal-body">
           <div class="card">
             <div class="card-body">
-            <form action="{{route('products.store')}}" method="POST" enctype="multipart/form-data" >
+            <form action="{{route('products.store')}}" method="POST" enctype="multipart/form-data">
               @csrf
                 <div class="form-group form-inline">
                   <label for="prodName">Name: </label>
@@ -42,6 +42,10 @@
                     <option>Picking</option>
                     <option>Security</option>
                     <option>Eating</option>
+                    <option>programming</option>
+                    <option>Reading</option>
+                    <option>Watching</option>
+                    <option>Charging</option>
                   </select>
                 </div>
                   <div class="form-group form-inline">
@@ -58,14 +62,7 @@
                   </div>
                   <div class="form-group form-inline">
                       <label for="unit">Unit: </label>
-                      <select class="form-control" name="unit" id="unit">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </select>
-                      
+                      <input type="number" name="unit" class="form-control" id="unit">   
                   </div>
                   <div class="form-group form-inline">
                       <label for="image">Image: </label>
@@ -133,13 +130,13 @@
                 <td>{{$product->pprice}}</td>
                 <td>{{$product->unit}}</td>
                 <td><img class="img-responsive" style="width:50px" src="{{asset('img/'.$product->image)}}"/></td>
-                <td><a  href="{{action('ProductsController@edit', $product->id)}}" class="btn btn-warning fa fa-edit btn-sm"></a></td>
+            <td><a href="{{action('ProductsController@edit', $product->id)}}" class="btn btn-warning fa fa-edit btn-sm"></a></td>
                 <td>
-                  <form action="{{action('ProductsController@destroy', $product->id )}}" method="post">
-                  @csrf
-                  <input type="hidden" name="_method" value="DELETE">
-                  <button class="btn btn-danger fa fa-trash-alt btn-sm"></button>
-                   </form>
+                  <form action="{{action('ProductsController@destroy',$product->id)}}" method="POST">
+                    @csrf
+                    <input type="hidden"  name="_method" value="DELETE">
+                    <button class="btn btn-danger fa fa-trash-alt btn-sm"></button>
+                  </form>
                 </td>
             </tr>
             @endforeach

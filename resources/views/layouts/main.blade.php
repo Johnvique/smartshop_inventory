@@ -120,6 +120,23 @@
                 </div>
               </div>
             </li>
+            <!-- Nav Item - Settings Collapse Menu -->
+                      <li class="nav-item">
+                          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSetting" aria-expanded="true" aria-controls="collapseSetting">
+                            <i class="fas fa-cogs"></i>
+                            <span>Settings</span>
+                          </a>
+                          <div id="collapseSetting" class="collapse" aria-labelledby="headingSetting" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                              <h6 class="collapse-header">Settings Area:</h6>
+                            <a class="collapse-item" href="{{url('dashboard/setting')}}">System Settings</a>
+                            <a class="collapse-item" href="{{url('dashboard/role')}}">Roles</a>
+                            <a class="collapse-item" href="{{url('dashboard/permission')}}">User Preveledges</a>
+                            </div>
+                          </div>
+                        </li>
+                        
+                        
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

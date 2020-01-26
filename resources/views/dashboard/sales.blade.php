@@ -47,13 +47,8 @@
                   </select>
                 </div>
                 <div class="form-group form-inline">
-                  <label for="quant">Quantity: </label>
-                  <select name="salquant">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                  </select>
+                  <label for="number">Quantity: </label>
+                  <input type="number" name="salquant">
                 </div>
                   <div class="form-group form-inline">
                       <label for="sprice">Price: </label>
