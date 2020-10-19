@@ -37,7 +37,14 @@
                 </div>
                 <div class="form-group form-inline">
                   <label for="cusName">Customer Name: </label>
-                  <input type="text" name="cusname" class="form-control" id="cusName" placeholder="Supplier Name">
+                  <select name="cusname" required class="form-control">
+                    <option value="" selected disabled>Select Customers</option>
+                    @foreach ($customers as $customer)
+                    <option value="{{$customer->cname}}">{{$customer->cname}}</option>
+                        
+                    @endforeach
+                    
+                  </select>
                 </div>
                 <div class="form-group form-inline">
                   <label for="status">Status: </label>

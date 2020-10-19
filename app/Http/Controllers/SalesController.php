@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Sales;
 use Illuminate\Http\Request;
+use App\Customers;
 
 class SalesController extends Controller
 {
@@ -15,7 +16,8 @@ class SalesController extends Controller
     public function index()
     {
         $sales =Sales::all();
-        return view('dashboard/sales', compact('sales'));
+        $customers = Customers::orderBy('id','Desc')->get();
+        return view('dashboard/sales', compact('sales','customers'));
     }
 
     /**
