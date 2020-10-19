@@ -36,21 +36,25 @@
                 </div>
                 <div class="form-group form-inline">
                   <label for="category">Category: </label>
-                  <select name="category">
-                    <option>Cleaning</option>
-                    <option>Sweeping</option>
-                    <option>Picking</option>
-                    <option>Security</option>
-                    <option>Eating</option>
-                    <option>programming</option>
-                    <option>Reading</option>
-                    <option>Watching</option>
-                    <option>Charging</option>
+                  <select name="category" required class="form-control">
+                    <option value="" selected disabled>Select Category</option>
+                    @foreach ($categories as $category)
+                    <option value="{{$category->catrname}}">{{$category->catrname}}</option>
+                        
+                    @endforeach
+                    
                   </select>
                 </div>
                   <div class="form-group form-inline">
                       <label for="supName">Supplier Name: </label>
-                      <input type="text" name="supname" class="form-control" id="supName" placeholder="Enter Suppliers">
+                      <select name="supname" required class="form-control">
+                        <option value="" selected disabled>Select Supplier</option>
+                        @foreach ($suppliers as $supplier)
+                        <option value="{{$supplier->sname}}">{{$supplier->sname}}</option>
+                            
+                        @endforeach
+                        
+                      </select>
                   </div>
                   <div class="form-group form-inline">
                       <label for="cost">Cost Price: </label>

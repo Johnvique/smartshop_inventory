@@ -35,24 +35,6 @@
                   <label for="catName">Category Name: </label>
                   <input type="text" name="catrname" class="form-control" id="catName" placeholder="Category Name">
                 </div>
-                <div class="form-group form-inline">
-                  <label for="status">Status: </label>
-                  <select name="stat">
-                    <option>Active</option>
-                    <option>Inactive</option>
-                  </select>
-                </div>
-                  <div class="form-group form-inline">
-                      <label for="details">Category Details: </label>
-                      <select class="details" name="catrdetails" id="details">
-                        <option>Sweeping</option>
-                        <option>Sleeping</option>
-                        <option>Eating</option>
-                        <option>Coding</option>
-                        <option>Playing</option>
-                      </select>
-                      
-                  </div>
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                   <button type="submit" class="btn btn-success">Save changes</button>
               </form>
@@ -79,8 +61,6 @@
             <tr>
               <th>SI</th>
               <th>Category Name</th>
-              <th>Status</th>
-              <th>Category Details</th>
               <th>Update</th>
               <th>Delete</th>
             </tr>
@@ -89,8 +69,6 @@
               <tr>
                 <th>SI</th>
                 <th>Category Name</th>
-                <th>Status</th>
-                <th>Category Details</th>
                 <th>Update</th>
                 <th>Delete</th>
                 </tr>
@@ -100,8 +78,6 @@
             <tr>
                 <td>{{$category->id}}</td>
                 <td>{{$category->catrname}}</td>
-                <td>{{$category->stat}}</td>
-                <td>{{$category->catrdetails}}</td>
                 <td><a  href="{{action('CategoryController@edit', $category->id)}}" class="btn btn-warning fa fa-edit btn-sm"></a></td>
                 <td><form action="{{action('CategoryController@destroy', $category->id )}}" method="post">
                   @csrf

@@ -8,7 +8,5 @@ class Category extends Model
 {
     protected $fillable=[
         'catrname',
-        'stat',
-        'catrdetails'
     ];
 }

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 use File;
 use App\Products;
 use Illuminate\Http\Request;
-
+use App\Category;
+use App\Suppliers;
 class ProductsController extends Controller
 {
     /**
@@ -15,7 +16,9 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Products::all();
-        return view('dashboard/products',compact('products'));
+        $categories = Category::orderBy('id','Desc')->get();
+        $suppliers = Suppliers::orderBy('id', 'Desc')->get();
+        return view('dashboard/products',compact('products','categories','suppliers'));
     }
 
     /**
@@ -80,7 +83,7 @@ class ProductsController extends Controller
     public function edit(Products $products ,$id)
     {
         $product = Products::find($id);
-        return view('dashboard/products_action/edit_product',compact('product'));
+        return view('dashboard/Products_action/edit_product',compact('product'));
     }
 
     /**

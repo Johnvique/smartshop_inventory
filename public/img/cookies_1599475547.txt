@@ -1,0 +1,6 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+.wrappixel.com	TRUE	/	FALSE	1999999999	__cfduid	d5dfbcda5b5428d49cea939cecd33394b1592805662
+www.wrappixel.com	TRUE	/	FALSE	1999999999	SameSite	Lax
+www.wrappixel.com	TRUE	/	FALSE	1999999999	_wpas_session	fe5a3fe18497a19c53ff8afa7df42f7b%7C%7C1592807463%7C%7C1592807103
+

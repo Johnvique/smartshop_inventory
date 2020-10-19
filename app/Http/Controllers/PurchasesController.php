@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Purchases;
 use Illuminate\Http\Request;
+use App\Suppliers;
 
 class PurchasesController extends Controller
 {
@@ -15,7 +16,8 @@ class PurchasesController extends Controller
     public function index()
     {
         $purchases =Purchases::all();
-        return view('dashboard/purchases', compact('purchases'));
+        $suppliers = Suppliers::orderBy('id','Desc')->get();
+        return view('dashboard/purchases', compact('purchases','suppliers'));
     }
 
     /**

@@ -38,8 +38,6 @@ class CategoryController extends Controller
     {
         $category = new Category;
         $category->catrname=$request->get ('catrname');
-        $category->stat=$request->get ('stat');
-        $category->catrdetails=$request->get ('catrdetails');
 
         $category->save();
         return redirect()->back();
@@ -81,8 +79,6 @@ class CategoryController extends Controller
         $categories= Category::find($id);
         $categories->update([
             'catrname'=>$request->catrname,
-            'stat'=>$request->stat,
-            'catrdetails'=>$request->catrdetails,
         ]);
 
         return redirect('category');

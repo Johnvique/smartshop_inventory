@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-body">
-        <form action="{{route('products.update', $product->id)}}" method="POST">
+        <form action="{{route('products.update', $product->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                           <div class="form-group form-inline">
@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-group form-inline">
                                 <label for="image">Image: </label>
-                                <input type="text"  name="image" value="{{$product->image}}" class="form-control" id="image"  placeholder="Upload the Image Here">
+                                <input type="file"  name="image" value="{{$product->image}}" class="form-control" id="image"  placeholder="Upload the Image Here" onchange="return imageval()">
                             </div>
                             <button type="submit" class="btn btn-success">Update</button>
                         </form>
