@@ -33,11 +33,11 @@
               @csrf
                 <div class="form-group form-inline">
                   <label for="paydate">Payment Date: </label>
-                  <input type="date" name="paydate" class="form-control" id="paydate" placeholder="">
+                  <input type="date" name="paydate" class="form-control" id="paydate" placeholder="" required>
                 </div>
                 <div class="form-group form-inline">
                     <label for="payfrom">Payment From: </label>
-                    <input type="text" name="payfrom" class="form-control" id="payfrom" placeholder="">
+                    <input type="text" name="payfrom" class="form-control" id="payfrom" placeholder="" required>
                   </div>
                 <div class="form-group form-inline">
                   <label for="category">Payment Type: </label>
@@ -59,7 +59,7 @@
                   </div>
                   <div class="form-group form-inline">
                       <label for="amount">Amount Paid: </label>
-                      <input type="text" name="amount" class="form-control" id="amount" placeholder="Enter the amount paid">
+                      <input type="text" name="amount" class="form-control" id="amount" placeholder="Enter the amount paid" required>
                   </div>
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                   <button type="submit" class="btn btn-success">Save changes</button>
