@@ -56,23 +56,24 @@
         Interface
       </div>
 
+      
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-briefcase"></i>
-          <span>Products</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePeople" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-users"></i>
+          <span>People</span>
         </a>
-        <div id="collapseProducts" class="collapse" aria-labelledby="headingProducts" data-parent="#accordionSidebar">
+        <div id="collapsePeople" class="collapse" aria-labelledby="headingPeople" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Products Components:</h6>
-          <a class="collapse-item" href="{{url('dashboard/products')}}">Add Products</a>
-            
-          </div>
+            <h6 class="collapse-header">Peoples Screens:</h6>
+            <a class="collapse-item" href="{{url('dashboard/customers')}}">Customers</a>
+            <a class="collapse-item" href="{{url('dashboard/suppliers')}}">Suppliers</a>
+          <a class="collapse-item" href="{{url('dashboard/employees')}}">Employees</a>
         </div>
       </li>
 
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
+           <!-- Nav Item - Utilities Collapse Menu -->
+           <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategory" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-th"></i>
           <span>Category</span>
@@ -87,16 +88,16 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePeople" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-users"></i>
-          <span>People</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-briefcase"></i>
+          <span>Products</span>
         </a>
-        <div id="collapsePeople" class="collapse" aria-labelledby="headingPeople" data-parent="#accordionSidebar">
+        <div id="collapseProducts" class="collapse" aria-labelledby="headingProducts" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Peoples Screens:</h6>
-            <a class="collapse-item" href="{{url('dashboard/customers')}}">Customers</a>
-            <a class="collapse-item" href="{{url('dashboard/suppliers')}}">Suppliers</a>
-          <a class="collapse-item" href="{{url('dashboard/employees')}}">Employees</a>
+            <h6 class="collapse-header">Products Components:</h6>
+          <a class="collapse-item" href="{{url('dashboard/products')}}">Add Products</a>
+            
+          </div>
         </div>
       </li>
 
