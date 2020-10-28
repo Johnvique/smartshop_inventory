@@ -61,12 +61,12 @@
                       <input type="text" name="costprice" class="form-control" id="cost" placeholder="Enter the costs">
                   </div>
                   <div class="form-group form-inline">
-                      <label for="price">Price: </label>
-                      <input type="text" name="pprice" class="form-control" id="price" placeholder="Enter the price">
-                  </div>
-                  <div class="form-group form-inline">
                       <label for="unit">Unit: </label>
                       <input type="number" name="unit" class="form-control" id="unit">   
+                  </div>
+                  <div class="form-group form-inline">
+                      <label for="tprice">Total Price: </label>
+                      <input type="text" name="tprice" class="form-control" id="tprice" placeholder="Enter the price">
                   </div>
                   <div class="form-group form-inline">
                       <label for="image">Image: </label>
@@ -102,8 +102,8 @@
               <th>Category</th>
               <th>Supplier Name</th>
               <th>Cost Price</th>
-              <th>Price</th>
               <th>Unit</th>
+              <th>Total Price</th>
               <th>Image</th>
               <th>Update</th>
               <th>Delete</th>
@@ -116,8 +116,8 @@
               <th>Category</th>
               <th>Supplier Name</th>
               <th>Cost Price</th>
-              <th>Price</th>
               <th>Unit</th>
+              <th>Total Price</th>
               <th>Image</th>
               <th>Update</th>
               <th>Delete</th>
@@ -131,8 +131,8 @@
                 <td>{{$product->category}}</td>
                 <td>{{$product->supname}}</td>
                 <td>{{$product->costprice}}</td>
-                <td>{{$product->pprice}}</td>
                 <td>{{$product->unit}}</td>
+                <td>{{$product->tprice}}</td>
                 <td><img class="img-responsive" style="width:50px" src="{{asset('img/'.$product->image)}}"/></td>
             <td><a href="{{action('ProductsController@edit', $product->id)}}" class="btn btn-warning fa fa-edit btn-sm"></a></td>
                 <td>

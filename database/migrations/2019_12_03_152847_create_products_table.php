@@ -19,8 +19,8 @@ class CreateProductsTable extends Migration
             $table->string('category');
             $table->string('supname');
             $table->string('costprice');
-            $table->string('pprice');
             $table->string('unit');
+            $table->string('tprice');
             $table->string('image');
             $table->timestamps();
         });

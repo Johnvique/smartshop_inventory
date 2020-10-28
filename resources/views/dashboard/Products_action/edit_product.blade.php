@@ -26,10 +26,6 @@
                                 <input type="text" name="costprice" value="{{$product->costprice}}" class="form-control" id="cost" placeholder="Enter the costs">
                             </div>
                             <div class="form-group form-inline">
-                                <label for="price">Price: </label>
-                                <input type="text" name="pprice" value="{{$product->pprice}}" class="form-control" id="price" placeholder="Enter the price">
-                            </div>
-                            <div class="form-group form-inline">
                                 <label for="unit">Unit: </label>
                                 <select class="form-control" value="{{$product->unit}}" name="unit" id="unit">
                                   <option>1</option>
@@ -39,6 +35,10 @@
                                   <option>5</option>
                                 </select>
                                 
+                            </div>
+                            <div class="form-group form-inline">
+                                <label for="tprice">Total Price: </label>
+                                <input type="text" name="tprice" value="{{$product->tprice}}" class="form-control" id="tprice" placeholder="Enter the price">
                             </div>
                             <div class="form-group form-inline">
                                 <label for="image">Image: </label>

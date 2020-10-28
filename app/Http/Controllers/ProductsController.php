@@ -55,8 +55,8 @@ class ProductsController extends Controller
         $product->category=$request->get('category');
         $product->supname=$request->get('supname');
         $product->costprice=$request->get('costprice');
-        $product->pprice=$request->get('pprice');
         $product->unit=$request->get('unit');
+        $product->tprice=$request->get('tprice');
         $product->image = $fileNameToStore;
 
         $product->save();
@@ -103,8 +103,8 @@ class ProductsController extends Controller
             'category'=>$request->category,
             'supname'=>$request->supname,
             'costprice'=>$request->costprice,
-            'pprice'=>$request->pprice,
             'unit'=>$request->unit,
+            'tprice'=>$request->tprice,
             'image'=>$request->image,
 
         ]);

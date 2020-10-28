@@ -11,8 +11,8 @@ class Products extends Model
         'category',
         'supname',
         'costprice',
-        'pprice',
         'unit',
+        'tprice',
         'image'
 
     ];
